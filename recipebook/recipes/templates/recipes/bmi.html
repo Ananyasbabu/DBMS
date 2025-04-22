@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BMI Calculator</title>
+  <link rel="stylesheet" href="{% static 'recipes/shared.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h2>BMI Calculator</h2>
+    <a href="{% url 'home' %}" class="back-button-top">⬅ Home</a>
+
+    <form id="bmiForm" method="POST">
+      {% csrf_token %}
+      <input type="number" id="height" placeholder="Enter height in cm">
+      <input type="number" id="weight" placeholder="Enter weight in kg">
+      <button type="button" onclick="calculateBMI()">Calculate & Track BMI</button>
+    </form>
+
+    <div id="bmiResult"></div>
+    <div id="foodSuggestion"></div>
+
+    <a href="{% url 'ingredients' %}">Go to Ingredient Book ➜</a>
+    <a href="{% url 'leaderboard' %}">View Weight Progress ➜</a>
+  </div>
+
+  <script src="{% static 'recipes/script.js' %}"></script>
+</body>
+</html>
