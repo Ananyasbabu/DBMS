@@ -3,13 +3,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login | NutriNote</title>
   <link rel="stylesheet" href="{% static 'recipes/login.css' %}">
 </head>
 <body>
   <div class="login-container">
     <h2>Welcome Back</h2>
-    {% if error %} <p class="error">{{ error }}</p> {% endif %}
+
+    <!-- Display Error Message -->
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+
+    <!-- Login Form -->
     <form class="login-form" action="{% url 'login' %}" method="POST">
       {% csrf_token %}
       <label for="email">Email</label>
@@ -19,9 +26,12 @@
       <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
       <button type="submit">Login</button>
-
-      <p class="register-link">Don't have an account? <a href="#">Register here</a></p>
     </form>
+
+    <!-- Registration Link -->
+    <p class="register-link">
+      Don't have an account? <a href="{% url 'register' %}">Register here</a>
+    </p>
   </div>
 </body>
 </html>
